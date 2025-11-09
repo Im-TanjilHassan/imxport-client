@@ -1,2 +1,28 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@plugin "daisyui/theme" {
+    name: "light";
+    default: true;
+    color-scheme: light;
+
+    /* === Base background & content === */
+    
+        /* === Button colors === */
+        --color-primary: oklch(45% 0.14 250);
+        /* button bg color: mid-blue (#004E92 vibe) */
+    
+        --color-primary-content: oklch(98% 0.01 100);
+        /* button text color: pure white */
+    
+        --color-secondary: oklch(55% 0.15 250);
+        /* hover bg color: brighter blue (#2E5CFF tone) */
+    
+        /* === Text-specific customization === */
+        --color-accent: oklch(95% 0.02 260);
+        /* heading color: slightly brighter white-blue */
+    
+        --color-paragraph: oklch(85% 0.04 260);
+        /* paragraph text color: light bluish gray */
+
+}
