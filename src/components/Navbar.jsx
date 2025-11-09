@@ -11,7 +11,7 @@ const Navbar = () => {
     <NavLink to='/addExport'>Add Export</NavLink>
     </>
     return (
-      <div className="navbar bg-base-100 shadow-sm mb-10">
+      <div className="navbar shadow-sm mb-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,16 +38,14 @@ const Navbar = () => {
               {menuLinks}
             </ul>
           </div>
-          <a className="font-bold text-xl">ImXport</a>
+          <a className="font-bold text-2xl "><span className='text-primary'>Im</span>Xport</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 space-x-3">{menuLinks}</ul>
         </div>
         <div className="navbar-end space-x-4">
-          <a className="btn btn-primary text-primary-content hover:btn-primary-hover">
-            LogIn
-          </a>
-          <a className="btn btn-secondary">SignUp</a>
+          <button className='btn-outline btn-primary font-semibold md:btn md:px-8'>LogIn</button>
+          <button className='btn-outline btn-primary font-semibold md:btn md:px-8'>Register</button>
         </div>
       </div>
     );
