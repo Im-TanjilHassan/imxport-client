@@ -5,6 +5,7 @@ import AllProducts from "../pages/AllProducts"
 import MyExports from "../pages/MyExports"
 import MyImports from "../pages/MyImports"
 import AddExport from "../pages/AddExport"
+import SeeDetails from "../pages/SeeDetails";
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
             {
                 path: '/allProducts',
                 element: <AllProducts></AllProducts>
+            },
+            {
+                path: '/allProducts/:id',
+                element: <SeeDetails></SeeDetails>
             },
             {
                 path: '/myExports',

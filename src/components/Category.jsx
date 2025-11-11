@@ -6,9 +6,6 @@ import { PiPantsFill } from "react-icons/pi";
 import { TbSunglassesFilled } from "react-icons/tb";
 import { FaLaptop } from "react-icons/fa";
 
-
-
-
 const Category = () => {
   return (
     <div className="mb-10 px-4">

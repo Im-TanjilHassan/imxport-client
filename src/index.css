@@ -9,13 +9,13 @@
     /* === Base background & content === */
     
         /* === Button colors === */
-        --color-primary: #3a347c;
+        --color-primary: #0d4141;
         /* button bg color: mid-blue (#004E92 vibe) */
     
         --color-primary-content: oklch(98% 0.01 100);
         /* button text color: pure white */
     
-        --color-secondary: #352f74;
+        --color-secondary: #11645d;
         /* hover bg color: brighter blue (#2E5CFF tone) */
     
         /* === Text-specific customization === */
@@ -28,6 +28,7 @@
 }
 
 .active{
-    color: #413996;
+    color: #11645d;
     font-weight: 700;
+    
 }

@@ -18,7 +18,7 @@ const Header = () => {
         </div>
 
         <div className="p-2 md:w-[60%] space-y-5">
-          <h1 className="text-4xl text-primary font-bold">
+          <h1 className="text-4xl text-secondary font-bold">
             Connecting Global Markets with Trust & Excellence
           </h1>
           <p>
