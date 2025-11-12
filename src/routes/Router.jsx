@@ -8,44 +8,66 @@ import AddExport from "../pages/AddExport"
 import SeeDetails from "../pages/SeeDetails";
 import PageNotFound from "../pages/PageNotFound";
 import Register from "../pages/Register";
+import Login from "../pages/Login";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        Component: MainLayout,
-        children: [
-            {
-                index: true,
-                element: <Home></Home>,
-            },
-            {
-                path: '/allProducts',
-                element: <AllProducts></AllProducts>
-            },
-            {
-                path: '/allProducts/:id',
-                element: <SeeDetails></SeeDetails>
-            },
-            {
-                path: '/myExports',
-                element: <MyExports></MyExports>
-            },
-            {
-                path: '/myImports',
-                element: <MyImports></MyImports>
-            },
-            {
-                path: '/addExport',
-                element: <AddExport></AddExport>
-            },
-        ]
-    },
-    {
-        path: '/*',
-        element: <PageNotFound></PageNotFound>
-    },
-    {
-        path: '/register',
-       element: <Register></Register> 
-    }
-])
+  {
+    path: "/",
+    Component: MainLayout,
+    children: [
+      {
+        index: true,
+        element: <Home></Home>,
+      },
+      {
+        path: "/allProducts",
+        element: <AllProducts></AllProducts>,
+      },
+      {
+        path: "/allProducts/:id",
+        element: (
+          <PrivateRoute>
+            <SeeDetails></SeeDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myExports",
+        element: (
+          <PrivateRoute>
+            <MyExports></MyExports>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myImports",
+        element: (
+          <PrivateRoute>
+            <MyImports></MyImports>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/addExport",
+        element: (
+          <PrivateRoute>
+            <AddExport></AddExport>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/*",
+    element: <PageNotFound></PageNotFound>,
+  },
+  {
+    path: "/register",
+    element: <Register></Register>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+]);

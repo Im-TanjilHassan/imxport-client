@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../context/AuthContext';
+import Loader from './Loader';
 
 const Navbar = () => {
+  const {user, logout, loading} = useContext(AuthContext)
 
     const menuLinks = <>
     <NavLink to='/'>Home</NavLink>
@@ -46,14 +49,52 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 space-x-3">{menuLinks}</ul>
         </div>
         <div className="navbar-end space-x-4">
-          <button className="btn-outline btn-primary font-semibold md:btn md:px-8">
-            LogIn
-          </button>
-          <Link to='/register'>
-            <button className="btn-outline btn-primary font-semibold md:btn md:px-8">
-              Register
-            </button>
-          </Link>
+          {loading ? (
+            <Loader></Loader>
+          ) : user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user.photoURL}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex="-1"
+                className="menu menu-sm dropdown-content outline bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              >
+                <li className="text-center border-b mb-2 text-primary">
+                  {user.displayName}
+                </li>
+                <li>
+                  <Link to="/profile">My Profile</Link>
+                </li>
+                <li onClick={() => logout()}>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className='space-x-4'>
+              <Link to='/login'>
+                <button className="btn-outline btn-primary font-semibold md:btn md:px-8">
+                  LogIn
+                </button>
+              </Link>
+
+              <Link to="/register">
+                <button className="btn-outline btn-primary font-semibold md:btn md:px-8">
+                  Register
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     );

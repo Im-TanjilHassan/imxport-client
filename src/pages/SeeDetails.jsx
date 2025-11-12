@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Loader from "../components/Loader";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { FaStar, FaGlobe, FaBoxOpen, FaMoneyBillWave } from "react-icons/fa";
 import ImportModal from "../components/ImportModal";
 import Swal from "sweetalert2";
+import { AuthContext } from "../context/AuthContext";
 
 
 const SeeDetails = () => {
+  const {user} = useContext(AuthContext)
   const { id } = useParams(); // get product id from URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -51,7 +53,7 @@ const SeeDetails = () => {
         body: JSON.stringify({
           productId: product._id,
           quantity: parseInt(importQuantity),
-          userEmail: "infamous@gmail.com",
+          userEmail: user.email,
         }),
       });
 

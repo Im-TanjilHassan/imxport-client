@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FcGoogle } from 'react-icons/fc';
+import Swal from "sweetalert2";
 
 const Register = () => {
     const { googleLogin, createUser, updateUserProfile } =
@@ -22,7 +23,11 @@ const Register = () => {
         })
         .then((err) => {
           const errorCode = err.code.split("/")[1];
-        //   toast.error(errorCode || "Something went wrong. Try again!");
+        Swal.fire({
+                  icon: "error",
+                  title: "Google Authentication Error",
+                  text: errorCode,
+                });
         });
     };
 
@@ -53,20 +58,28 @@ const Register = () => {
               })
               .then((err) => {
                 const errorCode = err.code.split("/")[1];
-                // toast.error(errorCode || "Something went wrong. Try again!");
+                Swal.fire({
+                  icon: "error",
+                  title: "User Authentication Error",
+                  text: errorCode,
+                });
               });
             navigate(from, { replace: true });
           })
           .then((err) => {
             const errorCode = err.code.split("/")[1];
-            // toast.error(errorCode || "Something went wrong. Try again!"); 
+            Swal.fire({
+              icon: "error",
+              title: "User Authentication Error",
+              text: errorCode,
+            }); 
           });
 
         e.target.reset();
     };
     
     return (
-      <div className="py-2 flex items-center justify-center bg-gray-100">
+      <div className="py-2 flex items-center justify-center bg-gray-300">
         <div className="flex w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-2xl">
           {/* left Side - Dark Panel */}
           <div className="hidden md:flex w-1/2 bg-linear-to-br from-primary to-secondary text-white flex-col justify-center items-center p-10 relative">
@@ -75,10 +88,11 @@ const Register = () => {
             <div className="relative z-10 text-center space-y-4">
               <h2 className="text-3xl font-bold">Welcome to ImXport</h2>
               <p className="text-gray-300 text-sm leading-relaxed">
-                GreenNest is a modern single-page website for plant lovers who
-                want to decorate and care for their homes with indoor plants.It
-                lets users explore plant care guides, buy beautiful plants, and
-                book expert consultations easily.
+                At ImXport, we bring the world closer by bridging the gap
+                between exporters and importers. Our platform ensures that every
+                transaction — from raw materials to finished goods — happens
+                smoothly, transparently, and securely across international
+                borders.
               </p>
               <p className="text-gray-400 text-xs">
                 More than 17k people joined — it’s your turn!
@@ -169,7 +183,7 @@ const Register = () => {
             <div className="text-center text-sm mt-4 text-gray-600">
               Already Have An Account?{" "}
               <Link
-                to="/auth/login"
+                to="/login"
                 className="text-secondary font-medium hover:underline"
               >
                 Log in
