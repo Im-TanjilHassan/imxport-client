@@ -3,11 +3,16 @@ import Loader from "../components/Loader";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { FaStar, FaGlobe, FaBoxOpen, FaMoneyBillWave } from "react-icons/fa";
+import ImportModal from "../components/ImportModal";
+import Swal from "sweetalert2";
+
 
 const SeeDetails = () => {
   const { id } = useParams(); // get product id from URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [importQuantity, setImportQuantity] = useState(0)
 
   useEffect(() => {
     fetch(`http://localhost:3000/products/${id}`)
@@ -21,6 +26,72 @@ const SeeDetails = () => {
         setLoading(false);
       });
   }, [id]);
+
+  
+  const handleModalSubmit = async() => {
+    if (!product) return;
+    setLoading(true);
+
+    const qty = parseInt(quantity, 10);
+    if (!Number.isInteger(qty) || qty <= 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Quantity",
+        text: "Please enter a valid positive number.",
+      });
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/import", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: product._id,
+          quantity: parseInt(importQuantity),
+          userEmail: "infamous@gmail.com",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        await Swal.fire({
+          icon: "success",
+          title: "Imported Successfully!",
+          text: `${qty} items imported successfully.`,
+          showConfirmButton: false,
+          timer: 1800,
+        });
+
+        // update available stock on UI
+        setProduct((prev) => ({
+          ...prev,
+          quantity: prev.quantity - qty,
+        }));
+      } else {
+        // ❌ backend error alert
+        Swal.fire({
+          icon: "error",
+          title: "Import Failed!",
+          text: data.message || "Unable to import product.",
+        });
+      }
+
+      setIsModalOpen(false);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Server Error",
+        text: "Something went wrong, please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
+
+  };
 
   if (loading) {
     return <Loader></Loader>;
@@ -41,6 +112,7 @@ const SeeDetails = () => {
     quantity,
   } = product;
 
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       {/* Header Section */}
@@ -59,9 +131,7 @@ const SeeDetails = () => {
           <h1 className="text-4xl font-bold text-secondary">{productName}</h1>
 
           <div>
-            <p className="font-semibold text-gray-500 text-xl">
-              Category
-            </p>
+            <p className="font-semibold text-gray-500 text-xl">Category</p>
             <p className="text-secondary font-bold">{category}</p>
           </div>
 
@@ -87,19 +157,20 @@ const SeeDetails = () => {
             <FaMoneyBillWave size={22} />
             {price} BDT
           </div>
-
-                  {/* Button */}
-                  {
-                      quantity < 0 ? (
-                      <button className="btn btn-primary btn-wide mt-4 text-lg font-semibold" disabled={true}>
-            Import Now
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="btn btn-primary btn-wide mt-4 text-lg font-semibold"
+            disabled={quantity <= 0}
+          >
+            {quantity <= 0 ? "Out of Stock" : "Import Now"}
           </button>
-   ) : (<button className="btn btn-secondary hover:btn-primary btn-wide mt-4 text-lg font-semibold">
-            Import Now
-          </button>)
-                  }
-          
         </div>
+        <ImportModal
+          open={isModalOpen}
+          onClose={setIsModalOpen}
+          onSubmit={handleModalSubmit}
+          importQuantity={setImportQuantity}
+        />
       </div>
 
       {/* Description Section */}
