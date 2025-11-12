@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
 
@@ -38,14 +38,22 @@ const Navbar = () => {
               {menuLinks}
             </ul>
           </div>
-          <a className="font-bold text-2xl "><span className='text-primary'>Im</span>Xport</a>
+          <a className="font-bold text-2xl ">
+            <span className="text-primary">Im</span>Xport
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 space-x-3">{menuLinks}</ul>
         </div>
         <div className="navbar-end space-x-4">
-          <button className='btn-outline btn-primary font-semibold md:btn md:px-8'>LogIn</button>
-          <button className='btn-outline btn-primary font-semibold md:btn md:px-8'>Register</button>
+          <button className="btn-outline btn-primary font-semibold md:btn md:px-8">
+            LogIn
+          </button>
+          <Link to='/register'>
+            <button className="btn-outline btn-primary font-semibold md:btn md:px-8">
+              Register
+            </button>
+          </Link>
         </div>
       </div>
     );

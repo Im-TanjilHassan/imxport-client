@@ -6,6 +6,8 @@ import MyExports from "../pages/MyExports"
 import MyImports from "../pages/MyImports"
 import AddExport from "../pages/AddExport"
 import SeeDetails from "../pages/SeeDetails";
+import PageNotFound from "../pages/PageNotFound";
+import Register from "../pages/Register";
 
 export const router = createBrowserRouter([
     {
@@ -37,5 +39,13 @@ export const router = createBrowserRouter([
                 element: <AddExport></AddExport>
             },
         ]
+    },
+    {
+        path: '/*',
+        element: <PageNotFound></PageNotFound>
+    },
+    {
+        path: '/register',
+       element: <Register></Register> 
     }
 ])
