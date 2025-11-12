@@ -32,7 +32,7 @@ const SeeDetails = () => {
     if (!product) return;
     setLoading(true);
 
-    const qty = parseInt(quantity, 10);
+    const qty = parseInt(importQuantity, 10);
     if (!Number.isInteger(qty) || qty <= 0) {
       Swal.fire({
         icon: "warning",
@@ -67,12 +67,8 @@ const SeeDetails = () => {
         });
 
         // update available stock on UI
-        setProduct((prev) => ({
-          ...prev,
-          quantity: prev.quantity - qty,
-        }));
+        setProduct((prev) => ({ ...prev, quantity: data.updatedQuantity }));
       } else {
-        // ❌ backend error alert
         Swal.fire({
           icon: "error",
           title: "Import Failed!",
@@ -84,7 +80,7 @@ const SeeDetails = () => {
     } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Server Error",
+        title: `${error.message}`,
         text: "Something went wrong, please try again.",
       });
     } finally {
