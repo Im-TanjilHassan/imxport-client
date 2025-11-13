@@ -55,7 +55,6 @@ const MyImports = () => {
   return (
     <div className="min-h-screen bg-base-100 p-6">
       <div className="max-w-6xl mx-auto">
-        {/* Title and Description */}
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-primary mb-2">
             My Imported Products
@@ -67,7 +66,7 @@ const MyImports = () => {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto shadow-xl rounded-xl bg-base-200">
+        <div className="overflow-x-auto shadow-xl rounded-xl bg-base-200 ">
           <table className="table w-full">
             <thead className="bg-primary text-white text-center">
               <tr>
@@ -75,7 +74,6 @@ const MyImports = () => {
                 <th>Product Name</th>
                 <th>Price(BDT)</th>
                 <th>Origin</th>
-                <th>Rating</th>
                 <th>Imported Quantity</th>
                 <th>Imported Time</th>
                 <th>Actions</th>

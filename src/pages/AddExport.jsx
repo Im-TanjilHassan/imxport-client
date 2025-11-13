@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../context/AuthContext";
 
 const AddExport = () => {
-    const [productData, setProductData] = useState({
-      productName: "",
-      price: "",
-      imageUrl: "",
-      quantity: "",
-      category: "",
-      description: "",
-      origin: "",
-    });
+  const { user } = useContext(AuthContext);
+  const [productData, setProductData] = useState({
+    productName: "",
+    price: "",
+    imageUrl: "",
+    quantity: "",
+    category: "",
+    description: "",
+    origin: "",
+    userEmail: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,9 +27,8 @@ const AddExport = () => {
       parseInt(productData.quantity) > 0 ? "available" : "Out of Stock";
     const createdAt = new Date().toISOString();
 
-    const finalProduct = { ...productData, status, createdAt };
+    const finalProduct = { ...productData, status, createdAt, userEmail: user?.email };
 
-    // you can replace this with your backend API endpoint
     try {
       const res = await fetch("http://localhost:3000/products", {
         method: "POST",

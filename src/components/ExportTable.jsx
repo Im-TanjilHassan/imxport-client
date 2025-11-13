@@ -1,19 +1,16 @@
-import React from "react";
-import { Link } from "react-router";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link } from 'react-router';
 
-const ProductTable = ({ product, handleRemove }) => {
+const ExportTable = ({ product, handleDelete, handleUpdate }) => {
   const {
-      _id,
-      productId,
+    _id,
     productName,
     imageUrl,
     price,
     origin,
-    importedQuantity,
-    importDate,
-    } = product;
-
+    quantity,
+    createdAt,
+  } = product;
   return (
     <tr className="hover:bg-gray-200 text-center font-semibold">
       <td>
@@ -26,16 +23,22 @@ const ProductTable = ({ product, handleRemove }) => {
       <td className="font-semibold">{productName}</td>
       <td>{price}</td>
       <td>{origin}</td>
-      <td>{importedQuantity}</td>
-      <td>{importDate}</td>
-      <td className="flex py-7 justify-between gap-2">
+      <td>{quantity}</td>
+      <td>{createdAt}</td>
+      <td className="flex py-7 justify-around gap-2">
         <button
-          onClick={() => handleRemove(_id)}
+          onClick={() => handleDelete(_id)}
           className="btn btn-sm btn-error text-white"
         >
-          Remove
+          Delete
         </button>
-        <Link to={`/allProducts/${productId}`}>
+        <button
+          onClick={() => handleUpdate()}
+          className="btn btn-sm bg-orange-400 text-white"
+        >
+          Update
+        </button>
+        <Link to={`/allProducts/${_id}`}>
           <button className="btn btn-sm btn-secondary text-white">
             See Details
           </button>
@@ -45,4 +48,4 @@ const ProductTable = ({ product, handleRemove }) => {
   );
 };
 
-export default ProductTable;
+export default ExportTable;
