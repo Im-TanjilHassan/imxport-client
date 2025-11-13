@@ -3,11 +3,14 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/Loader";
 import ExportTable from "../components/ExportTable";
+import UpdateModal from "../components/UpdateModal";
 
 const MyExports = () => {
   const { user } = useContext(AuthContext);
   const [exportsData, setExportsData] = useState([]);
-  const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!user?.email) return;
@@ -53,7 +56,25 @@ const MyExports = () => {
         Swal.fire("Error!", "Failed to delete product.", "error");
       }
     }
-  };
+    };
+    
+    const handleOpenModal = (product) => {
+      setSelectedProduct(product);
+      setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+      setIsModalOpen(false);
+      setSelectedProduct(null);
+    };
+
+     const handleUpdateUI = (id, updatedData) => {
+       setExports((prev) =>
+         prev.map((item) =>
+           item._id === id ? { ...item, ...updatedData } : item
+         )
+       );
+     };
 
   const handleUpdate = () => {
     Swal.fire(
@@ -101,7 +122,7 @@ const MyExports = () => {
                   key={product._id}
                   product={product}
                   handleDelete={handleDelete}
-                  handleUpdate={handleUpdate}
+                  handleOpenModal={handleOpenModal}
                 ></ExportTable>
               ))}
             </tbody>
@@ -110,6 +131,13 @@ const MyExports = () => {
           <p className="text-center text-2xl text-gray-400">
             No Exported Product Found
           </p>
+        )}
+        {isModalOpen && (
+          <UpdateModal
+            product={selectedProduct}
+            onClose={handleCloseModal}
+            onUpdate={handleUpdateUI}
+          />
         )}
       </div>
     </div>

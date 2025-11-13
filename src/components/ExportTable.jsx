@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const ExportTable = ({ product, handleDelete, handleUpdate }) => {
-  const {
-    _id,
-    productName,
-    imageUrl,
-    price,
-    origin,
-    quantity,
-    createdAt,
-  } = product;
+const ExportTable = ({
+  product,
+  handleDelete,
+  handleOpenModal,
+}) => {
+  const { _id, productName, imageUrl, price, origin, quantity, createdAt } =
+    product;
   return (
     <tr className="hover:bg-gray-200 text-center font-semibold">
       <td>
@@ -33,7 +30,7 @@ const ExportTable = ({ product, handleDelete, handleUpdate }) => {
           Delete
         </button>
         <button
-          onClick={() => handleUpdate()}
+          onClick={() => handleOpenModal(product)}
           className="btn btn-sm bg-orange-400 text-white"
         >
           Update
