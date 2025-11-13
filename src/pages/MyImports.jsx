@@ -36,7 +36,7 @@ const MyImports = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:3000/import/${_id}`, {
+          const res = await fetch(`http://localhost:3000/import/${id}`, {
             method: "DELETE",
           });
           const result = await res.json();
