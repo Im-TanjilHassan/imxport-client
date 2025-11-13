@@ -15,7 +15,7 @@ const ProductTable = ({ product, handleRemove }) => {
     } = product;
 
   return (
-    <tr className="hover:bg-gray-200 text-center font-semibold">
+    <tr className="hover:bg-primary-content text-center font-semibold">
       <td>
         <img
           src={imageUrl}

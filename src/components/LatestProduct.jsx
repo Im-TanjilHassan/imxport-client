@@ -7,10 +7,10 @@ const LatestProduct = ({ products }) => {
       <section className="py-12 px-4 md:px-8 lg:px-16 bg-base-100">
         {/* Section Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-3">
             Our Latest Products
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-paragraph max-w-2xl mx-auto">
             Discover our newest arrivals — handpicked with premium quality and
             stylish design, ready to make your collection stand out.
           </p>

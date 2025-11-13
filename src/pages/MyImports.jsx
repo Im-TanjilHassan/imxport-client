@@ -20,8 +20,9 @@ const MyImports = () => {
       }
     };
     fetchImports();
+
+    document.title = "ImXport | MyImports"
   }, [user.email]);
-    
 
   //remove product
   const handleRemove = async (id) => {
@@ -45,8 +46,7 @@ const MyImports = () => {
             Swal.fire("Removed!", "Product has been removed.", "success");
           }
         } catch (error) {
-          console.error(error);
-          Swal.fire("Error", "Failed to remove product.", "error");
+          Swal.fire("Error", "Failed to remove product.", error.message);
         }
       }
     });
@@ -56,7 +56,7 @@ const MyImports = () => {
     <div className="min-h-screen bg-base-100 p-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-primary mb-2">
+          <h1 className="text-3xl font-bold text-secondary mb-2">
             My Imported Products
           </h1>
           <p className="text-gray-500">
@@ -67,36 +67,34 @@ const MyImports = () => {
 
         {/* Table */}
         <div className="overflow-x-auto shadow-xl rounded-xl bg-base-200 ">
-          <table className="table w-full">
-            <thead className="bg-primary text-white text-center">
-              <tr>
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Price(BDT)</th>
-                <th>Origin</th>
-                <th>Imported Quantity</th>
-                <th>Imported Time</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {imports.length === 0 ? (
+          {imports.length === 0 ? (
+            <div className="text-center text-gray-500 text-2xl font-semibold h-screen py-10">
+              <p>No Imported Product Found</p>
+            </div>
+          ) : (
+            <table className="table w-full">
+              <thead className="bg-primary text-white text-center">
                 <tr>
-                  <td colSpan="7" className="text-center py-6 text-gray-500">
-                    No imported products found.
-                  </td>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Price(BDT)</th>
+                  <th>Origin</th>
+                  <th>Imported Quantity</th>
+                  <th>Imported Time</th>
+                  <th>Actions</th>
                 </tr>
-              ) : (
-                imports.map((product) => (
+              </thead>
+              <tbody>
+                {imports.map((product) => (
                   <ProductTable
                     key={product.productId}
                     product={product}
                     handleRemove={handleRemove}
                   ></ProductTable>
-                ))
-              )}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

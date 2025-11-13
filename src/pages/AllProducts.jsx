@@ -15,16 +15,20 @@ const AllProducts = () => {
   // Filter products based on search
   const filteredProducts = products.filter((product) =>
     product.productName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  );
+  
+  useEffect(() => {
+    document.title = "InXport | All Products";
+  }, []);
     
   return (
-    <div className="min-h-screen bg-base-200 py-10 px-5 md:px-16">
+    <div className="min-h-screen py-10 px-5 md:px-16">
       {/* Header Section */}
       <div className="text-center mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary">
+        <h1 className="text-2xl md:text-4xl font-bold text-secondary">
           Our Products
         </h1>
-        <p className="text-base md:text-lg text-gray-600 mt-3 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-paragraph mt-3 max-w-2xl mx-auto">
           Explore our latest imported and exported products, crafted with
           premium quality and available at the best prices.
         </p>
@@ -32,7 +36,7 @@ const AllProducts = () => {
 
       {/* Search + Count */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <p className="text-gray-600 text-sm md:text-base">
+        <p className="text-paragraph text-sm md:text-base">
           Showing{" "}
           <span className="font-semibold">{filteredProducts.length}</span> of{" "}
           <span className="font-semibold">{products.length}</span> products

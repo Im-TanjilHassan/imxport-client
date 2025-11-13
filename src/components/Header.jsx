@@ -29,10 +29,10 @@ const Header = () => {
           </p>
           <p className="font-bold mb-4">connect with social media</p>
           <div className="space-x-6 flex flex-wrap space-y-4">
-            <button className="btn btn-outline btn-primary">Facebook</button>
-            <button className="btn btn-outline btn-primary">Instagram</button>
-            <button className="btn btn-outline btn-primary">Thread</button>
-            <button className="btn btn-outline btn-primary">WhatsApp</button>
+            <button className="btn btn-outline btn-secondary">Facebook</button>
+            <button className="btn btn-outline btn-secondary">Instagram</button>
+            <button className="btn btn-outline btn-secondary">Thread</button>
+            <button className="btn btn-outline btn-secondary">WhatsApp</button>
           </div>
         </div>
       </div>

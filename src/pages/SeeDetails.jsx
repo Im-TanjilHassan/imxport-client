@@ -130,8 +130,8 @@ const SeeDetails = () => {
           <h1 className="text-4xl font-bold text-secondary">{productName}</h1>
 
           <div>
-            <p className="font-semibold text-gray-500 text-xl">Category</p>
-            <p className="text-secondary font-bold">{category}</p>
+            <p className="font-semibold text-paragraph text-xl">Category</p>
+            <p className="text-primary font-bold">{category}</p>
           </div>
 
           <div className="flex items-center space-x-12">
@@ -152,13 +152,13 @@ const SeeDetails = () => {
             </div>
           </div>
           {/* Price */}
-          <div className="flex items-center gap-2 text-2xl font-bold text-primary">
+          <div className="flex items-center gap-2 text-2xl font-bold text-secondary">
             <FaMoneyBillWave size={22} />
             {price} BDT
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="btn btn-primary btn-wide mt-4 text-lg font-semibold"
+            className="btn btn-secondary btn-wide mt-4 text-lg font-semibold"
             disabled={quantity <= 0}
           >
             {quantity <= 0 ? "Out of Stock" : "Import Now"}
@@ -174,8 +174,8 @@ const SeeDetails = () => {
 
       {/* Description Section */}
       <div className="mt-12 bg-base-200 p-6 rounded-2xl shadow-sm">
-        <h2 className="text-2xl font-semibold mb-3">About this product</h2>
-        <p className="text-base text-gray-700 leading-relaxed">{description}</p>
+        <h2 className="text-3xl font-bold mb-3">About this product</h2>
+        <p className="text-base text-paragraph leading-relaxed">{description}</p>
       </div>
     </div>
   );

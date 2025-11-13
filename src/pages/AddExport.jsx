@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
 
@@ -56,22 +56,29 @@ const AddExport = () => {
         Swal.fire("Error", "Failed to add product", "error");
       }
     } catch (error) {
-      Swal.fire("Error", "Something went wrong!", "error");
+      Swal.fire("Error", "Something went wrong!", error.message);
     }
   };
 
+  useEffect(() => {
+    document.title = "ImXport | AddExport";
+  }, []);
+
   return (
-    <div className="max-w-4xl mx-auto p-6 mt-10 bg-gray-300 shadow-lg rounded-2xl">
+    <div className="max-w-4xl mx-auto p-6 mt-10 shadow-lg rounded-2xl">
       {/* Title and Description */}
       <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-primary">Add New Product</h2>
+        <h2 className="text-3xl font-bold text-secondary">Add New Product</h2>
         <p className="text-gray-500 mt-2">
           Fill out the details below to add a new product to your collection.
         </p>
       </div>
 
       {/* Form */}
-      <form onSubmit={handleAddProduct} className="space-y-5">
+      <form
+        onSubmit={handleAddProduct}
+        className="space-y-5  bg-primary-content p-10 rounded-2xl"
+      >
         {/* Product Name and Price */}
         <div className="flex flex-col md:flex-row gap-4">
           <div className="form-control w-full">
@@ -187,9 +194,9 @@ const AddExport = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="btn btn-primary w-full mt-4 text-lg font-semibold"
+          className="btn btn-secondary w-full mt-4 text-lg font-semibold"
         >
-          Add Product
+          Export Product
         </button>
       </form>
     </div>

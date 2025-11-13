@@ -8,8 +8,8 @@ import UpdateModal from "../components/UpdateModal";
 const MyExports = () => {
   const { user } = useContext(AuthContext);
   const [exportsData, setExportsData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [selectedProduct, setSelectedProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -28,6 +28,8 @@ const MyExports = () => {
       }
     };
     fetchExports();
+
+      document.title = "ImXport | MyExports";
   }, [user]);
 
   const handleDelete = async (id) => {
@@ -53,38 +55,38 @@ const MyExports = () => {
           setExportsData(exportsData.filter((item) => item._id !== id));
         }
       } catch (error) {
-        Swal.fire("Error!", "Failed to delete product.", "error");
+        Swal.fire("Error!", "Failed to delete product.", error);
       }
     }
-    };
-    
-    const handleOpenModal = (product) => {
-      setSelectedProduct(product);
-      setIsModalOpen(true);
-    };
+  };
 
-    const handleCloseModal = () => {
-      setIsModalOpen(false);
-      setSelectedProduct(null);
-    };
+  const handleOpenModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
 
-     const handleUpdateUI = (id, updatedData) => {
-       setExportsData((prev) =>
-         prev.map((item) =>
-           item._id === id ? { ...item, ...updatedData } : item
-         )
-       );
-     };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
+  const handleUpdateUI = (id, updatedData) => {
+    setExportsData((prev) =>
+      prev.map((item) => (item._id === id ? { ...item, ...updatedData } : item))
+    );
+  };
 
   if (loading) {
     return <Loader></Loader>;
   }
 
+  
+
   return (
     <div className="container mx-auto px-4 py-10">
       {/* Page Title */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-primary mb-2">
+        <h1 className="text-3xl font-bold text-secondary mb-2">
           My Exported Products
         </h1>
         <p className="text-gray-500">
@@ -94,7 +96,7 @@ const MyExports = () => {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto shadow-xl rounded-xl h-screen">
+      <div className="overflow-x-auto shadow-xl rounded-xl">
         {exportsData.length > 0 ? (
           <table className="table w-full">
             <thead className="bg-primary text-white text-center">
@@ -120,9 +122,9 @@ const MyExports = () => {
             </tbody>
           </table>
         ) : (
-          <p className="text-center text-2xl text-gray-400">
-            No Exported Product Found
-          </p>
+          <div className="text-center text-2xl text-gray-400 h-screen py-10">
+            <p>No Exported Product Found</p>
+          </div>
         )}
         {isModalOpen && (
           <UpdateModal

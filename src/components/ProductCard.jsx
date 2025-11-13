@@ -28,24 +28,24 @@ const ProductCard = ({ product }) => {
         />
       </figure>
       <div className="card-body">
-        <div className=" grid grid-cols-2 justify-center items-center gap-2">
-          <p className="text-md font-semibold text-gray-600">
+        <div className=" grid grid-cols-2 justify-center items-center gap-2 text-paragraph">
+          <p className="text-md font-semibold">
             Price: <span className="font-medium text-lg">{price} $</span>
           </p>
-          <p className="text-md text-gray-600 font-semibold">
+          <p className="text-md font-semibold">
             Origin: <span className="text-lg font-bold">{origin}</span>
           </p>
-          <p className="text-md text-gray-600 font-semibold">
+          <p className="text-md font-semibold">
             Status: <span className="text-lg font-bold">{status}</span>
           </p>
-          <p className="text-md text-gray-600 font-semibold">
+          <p className="text-md font-semibold">
             Available:{" "}
             <span className="text-lg font-bold">{quantity} pice</span>
           </p>
         </div>
         <div className="card-actions justify-end mt-3">
           <Link to={`/allProducts/${_id}`} className="w-full">
-            <button className="btn btn-sm btn-secondary hover:btn-primary w-full">
+            <button className="btn btn-sm btn-secondary hover:btn-primary hover:text-accent w-full">
               See Details
             </button>
           </Link>

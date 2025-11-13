@@ -1,4 +1,4 @@
-import React, { Suspense, use } from "react";
+import React, { Suspense, use, useEffect } from "react";
 import Header from "../components/Header";
 import Category from "../components/Category";
 import LatestProduct from "../components/LatestProduct";
@@ -9,6 +9,10 @@ const latestProductPromise = fetch("http://localhost:3000/latestProduct").then(
 );
 const Home = () => {
   const latestProduct = use(latestProductPromise);
+
+  useEffect(() => {
+    document.title = "ImXport | Home";
+  }, []);
 
   return (
     <div>
