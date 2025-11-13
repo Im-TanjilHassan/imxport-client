@@ -19,7 +19,7 @@
         /* hover bg color: brighter blue (#2E5CFF tone) */
     
         /* === Text-specific customization === */
-        --color-accent: oklch(95% 0.02 260);
+        --color-accent: #000000;
         /* heading color: slightly brighter white-blue */
     
         --color-paragraph: oklch(85% 0.04 260);
@@ -47,7 +47,8 @@
 }
 
 .active{
-    color: #11645d;
+    /* color: #11645d; */
+    color: #000000;
     font-weight: 700;
     border-bottom: 1px solid #11645d;
     

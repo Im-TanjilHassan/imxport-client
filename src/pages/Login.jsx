@@ -59,19 +59,19 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-300 py-20">
-      <div className="flex w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-2xl px-2">
+    <div className="flex items-center justify-center bg-base-100 py-20">
+      <div className="flex w-full max-w-5xl bg-base-200 rounded-2xl overflow-hidden shadow-2xl px-2">
         {/* Left Side - Sign In Form */}
         <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
           {/* Logo */}
           <div className="mb-6 text-center md:text-left">
-            <h2 className="text-3xl font-semibold mt-6 text-primary">Log in</h2>
+            <h2 className="text-3xl font-semibold mt-6 text-secondary">Log in</h2>
           </div>
 
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-600">
+              <label className="block text-sm font-medium text-accent">
                 Email Address
               </label>
               <input
@@ -83,7 +83,7 @@ const Login = () => {
             </div>
 
             <div className="relative">
-              <label className="block text-sm font-medium text-gray-600">
+              <label className="block text-sm font-medium text-accent">
                 Password
               </label>
               <input
@@ -102,9 +102,9 @@ const Login = () => {
               </button>
             </div>
             {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-            <p className="text-gray-500 hover:underline">Forgot password?</p>
+            <p className="text-accent hover:underline">Forgot password?</p>
 
-            <button className="btn btn-primary hover:btn-secondary w-full mt-3">
+            <button className="btn btn-secondary hover:btn-primary text-white w-full mt-3">
               LogIn
             </button>
           </form>
@@ -135,7 +135,10 @@ const Login = () => {
 
         {/* Right Side - Dark Panel */}
         <div className="hidden md:flex w-1/2 bg-linear-to-br from-primary to-secondary text-white flex-col justify-center items-center p-10 relative">
-          <div className="relative z-10 text-center space-y-4">
+          <div
+            data-aos="fade-up"
+            className="relative z-10 text-center space-y-4"
+          >
             <h2 className="text-3xl font-bold">Welcome to ImXport</h2>
             <p className="text-gray-300 text-sm leading-relaxed">
               At ImXport, we bring the world closer by bridging the gap between
@@ -149,7 +152,10 @@ const Login = () => {
             </p>
           </div>
 
-          <div className="mt-8 relative z-10 bg-secondary rounded-xl p-5 w-72 text-center">
+          <div
+            data-aos="fade-up"
+            className="mt-8 relative z-10 bg-secondary rounded-xl p-5 w-72 text-center"
+          >
             <p className="text-gray-200 text-sm mb-3">
               Get your right job and apply now — start your journey easily!
             </p>

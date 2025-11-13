@@ -79,13 +79,14 @@ const Register = () => {
     };
     
     return (
-      <div className="py-2 flex items-center justify-center bg-gray-300">
-        <div className="flex w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-2xl">
+      <div className="py-2 flex items-center justify-center bg-base-100">
+        <div className="flex w-full max-w-5xl bg-base-200 rounded-2xl overflow-hidden shadow-2xl">
           {/* left Side - Dark Panel */}
-          <div className="hidden md:flex w-1/2 bg-linear-to-br from-primary to-secondary text-white flex-col justify-center items-center p-10 relative">
-            {/* <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')] bg-cover bg-center"></div> */}
-
-            <div className="relative z-10 text-center space-y-4">
+          <div className="md:flex w-1/2 bg-linear-to-br from-primary to-secondary text-white flex-col justify-center items-center p-10 relative">
+            <div
+              data-aos="fade-up"
+              className="relative z-10 text-center space-y-4"
+            >
               <h2 className="text-3xl font-bold">Welcome to ImXport</h2>
               <p className="text-gray-300 text-sm leading-relaxed">
                 At ImXport, we bring the world closer by bridging the gap
@@ -99,7 +100,10 @@ const Register = () => {
               </p>
             </div>
 
-            <div className="mt-8 relative z-10 bg-secondary rounded-xl p-5 w-72 text-center">
+            <div
+              data-aos="fade-up"
+              className="mt-8 relative z-10 bg-secondary rounded-xl p-5 w-72 text-center"
+            >
               <p className="text-gray-200 text-sm mb-3">
                 Get your right job and apply now — start your journey easily!
               </p>
@@ -109,19 +113,14 @@ const Register = () => {
           <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
             {/* Logo */}
             <div className="mb-6 text-center md:text-left">
-              <img
-                src="/images/logo.png"
-                alt="Logo"
-                className="w-22 mx-auto md:mx-0"
-              />
-              <h2 className="text-3xl font-semibold mt-6 text-primary">
+              <h2 className="text-3xl font-semibold mt-6 text-secondary">
                 Create Your Account
               </h2>
             </div>
             {/* Form */}
             <form onSubmit={handleSignup} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-600">
+                <label className="block text-sm font-medium text-accent">
                   Name
                 </label>
                 <input
@@ -132,7 +131,7 @@ const Register = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-600">
+                <label className="block text-sm font-medium text-accent">
                   Email Address
                 </label>
                 <input
@@ -143,7 +142,7 @@ const Register = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-600">
+                <label className="block text-sm font-medium text-accent">
                   Photo URL
                 </label>
                 <input
@@ -154,7 +153,7 @@ const Register = () => {
                 />
               </div>
               <div className="relative">
-                <label className="block text-sm font-medium text-gray-600">
+                <label className="block text-sm font-medium text-accent">
                   Password
                 </label>
                 <input
@@ -174,7 +173,7 @@ const Register = () => {
               </div>
               {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
-              <button className="btn btn-primary hover:btn-secondary w-full mt-3">
+              <button className="btn btn-secondary hover:btn-primary text-white w-full mt-3">
                 Create Account
               </button>
             </form>
