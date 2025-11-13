@@ -6,6 +6,7 @@ import { FaStar, FaGlobe, FaBoxOpen, FaMoneyBillWave } from "react-icons/fa";
 import ImportModal from "../components/ImportModal";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
+import ProductNotFound from "../components/ProductNotFound";
 
 
 const SeeDetails = () => {
@@ -96,7 +97,7 @@ const SeeDetails = () => {
   }
 
   if (!product) {
-    return <p className="text-center text-red-500">Product not found.</p>;
+    return <ProductNotFound></ProductNotFound>;
   }
 
   const {
