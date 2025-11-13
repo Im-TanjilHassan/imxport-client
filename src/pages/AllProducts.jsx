@@ -43,7 +43,7 @@ const AllProducts = () => {
         </p>
 
         <div className="w-full md:w-1/3">
-          <label className="input input-bordered flex items-center gap-2 rounded-full">
+          <label className="input w-full input-bordered flex items-center gap-2 rounded-full">
             <input
               type="text"
               placeholder="Search by product name..."

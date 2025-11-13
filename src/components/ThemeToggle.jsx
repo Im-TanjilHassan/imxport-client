@@ -13,9 +13,9 @@ const ThemeToggle = () => {
     return (
       <button
         onClick={handleToggle}
-        className="btn btn-sm bg-primary text-primary-content"
+        className="btn btn-sm border-2 rounded-full text-primary-content"
       >
-        {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+        {theme === "light" ? "🌙" : "☀️"}
       </button>
     );
 };

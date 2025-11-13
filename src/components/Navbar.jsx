@@ -15,7 +15,7 @@ const Navbar = () => {
     <NavLink to='/addExport'>Add Export</NavLink>
     </>
     return (
-      <div className="navbar rounded-2xl mb-10 fixed top-0 left-0 w-full z-50 bg-base-100 px-14 shadow-xl/30">
+      <div className="navbar rounded-2xl mb-10 fixed top-0 left-0 w-full z-50 bg-base-100 md:px-14 shadow-xl/30">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -73,9 +73,6 @@ const Navbar = () => {
               >
                 <li className="text-center border-b mb-2 text-primary">
                   {user.displayName}
-                </li>
-                <li>
-                  <Link to="/profile">My Profile</Link>
                 </li>
                 <li onClick={() => logout()}>
                   <a>Logout</a>
