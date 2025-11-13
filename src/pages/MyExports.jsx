@@ -69,20 +69,12 @@ const MyExports = () => {
     };
 
      const handleUpdateUI = (id, updatedData) => {
-       setExports((prev) =>
+       setExportsData((prev) =>
          prev.map((item) =>
            item._id === id ? { ...item, ...updatedData } : item
          )
        );
      };
-
-  const handleUpdate = () => {
-    Swal.fire(
-      "Feature Coming Soon!",
-      "Update feature is under development.",
-      "info"
-    );
-  };
 
   if (loading) {
     return <Loader></Loader>;
