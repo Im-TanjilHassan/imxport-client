@@ -4,6 +4,7 @@ import Category from "../components/Category";
 import LatestProduct from "../components/LatestProduct";
 import Loader from "../components/Loader";
 import Aos from "aos";
+import UserReviews from "../components/UserReviews ";
 
 const Home = () => {
   const [latestProducts, setLatestProducts] = useState([])
@@ -27,6 +28,7 @@ const Home = () => {
       <Suspense fallback={<Loader></Loader>}>
         <LatestProduct products={latestProducts}></LatestProduct>
       </Suspense>
+      <UserReviews></UserReviews>
     </div>
   );
 };
