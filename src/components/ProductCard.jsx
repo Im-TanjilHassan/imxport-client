@@ -8,7 +8,10 @@ const ProductCard = ({ product }) => {
   const [heart, setHeart] = useState(false);
 
   return (
-    <div className="card bg-base-100 transition-all duration-300 border rounded-2xl rounded-tr-[4rem] shadow-xl/30 p-2">
+    <div
+      data-aos="fade-up"
+      className="card bg-base-100 transition-all duration-300 border rounded-2xl rounded-tr-[4rem] shadow-xl/30 p-2"
+    >
       <div className=" flex justify-between items-center p-4">
         <h2 className="text-secondary font-bold text-xl">{productName}</h2>
         <div

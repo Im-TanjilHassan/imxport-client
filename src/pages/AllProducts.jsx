@@ -6,7 +6,7 @@ const AllProducts = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/products")
+    fetch("https://imxport-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching products:", error));
@@ -16,11 +16,11 @@ const AllProducts = () => {
   const filteredProducts = products.filter((product) =>
     product.productName.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
+
   useEffect(() => {
     document.title = "InXport | All Products";
   }, []);
-    
+
   return (
     <div className="min-h-screen py-10 px-5 md:px-16">
       {/* Header Section */}
@@ -71,7 +71,9 @@ const AllProducts = () => {
 
       {/* Product Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div
+          className="grid gap-6 sm:grid-cols-2 md:grid-cols-3"
+        >
           {filteredProducts.map((product) => (
             <ProductCard key={product._id} product={product}></ProductCard>
           ))}

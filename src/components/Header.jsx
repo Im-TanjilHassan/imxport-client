@@ -3,7 +3,7 @@ import headerBag from "../assets/header-bag.png";
 import headerShoes from "../assets/header-shoes.png";
 const Header = () => {
   return (
-    <div className="hero bg-base-200 mb-10">
+    <div data-aos="fade-up" className="hero bg-base-200 mb-10">
       <div className="hero-content flex-col lg:flex-row">
         <div className="grid grid-cols-2 grid-rows-2 gap-4 md:w-[40%] items-center ">
           <div className="row-span-2 border-2 rounded-tl-4xl">

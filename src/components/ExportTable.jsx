@@ -9,7 +9,9 @@ const ExportTable = ({
   const { _id, productName, imageUrl, price, origin, quantity, createdAt } =
     product;
   return (
-    <tr className="hover:bg-primary-content text-center font-semibold">
+    <tr
+      className="hover:bg-primary-content text-center font-semibold"
+    >
       <td>
         <img
           src={imageUrl}

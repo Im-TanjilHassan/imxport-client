@@ -27,10 +27,17 @@ const AddExport = () => {
       parseInt(productData.quantity) > 0 ? "available" : "Out of Stock";
     const createdAt = new Date().toISOString();
 
-    const finalProduct = { ...productData, status, createdAt, userEmail: user?.email };
+    const finalProduct = {
+      ...productData,
+      status,
+      price: parseFloat(productData.price),
+      quantity: parseInt(productData.quantity, 10),
+      createdAt,
+      userEmail: user?.email,
+    };
 
     try {
-      const res = await fetch("http://localhost:3000/products", {
+      const res = await fetch("https://imxport-server.vercel.app/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(finalProduct),

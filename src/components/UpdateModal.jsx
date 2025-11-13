@@ -3,8 +3,8 @@ import Swal from "sweetalert2";
 const UpdateModal = ({ product, onClose, onUpdate }) => {
   if (!product) return null;
 
-    const {
-      _id,
+  const {
+    _id,
     productName,
     imageUrl,
     price,
@@ -12,10 +12,9 @@ const UpdateModal = ({ product, onClose, onUpdate }) => {
     origin,
     quantity,
     description,
-    } = product;
-    
-    console.log(product);
-    
+  } = product;
+
+  console.log(product);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,12 +31,15 @@ const UpdateModal = ({ product, onClose, onUpdate }) => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3000/exports/${_id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedProduct),
-      });
-        const data = await res.json();
+      const res = await fetch(
+        `https://imxport-server.vercel.app/exports/${_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedProduct),
+        }
+      );
+      const data = await res.json();
 
       if (
         data.exportResult?.modifiedCount > 0 ||

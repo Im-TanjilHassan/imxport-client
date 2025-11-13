@@ -11,7 +11,7 @@ const MyImports = () => {
     const fetchImports = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/import?email=${user.email}`
+          `https://imxport-server.vercel.app/import?email=${user.email}`
         );
         const data = await res.json();
         setImports(data);
@@ -21,7 +21,7 @@ const MyImports = () => {
     };
     fetchImports();
 
-    document.title = "ImXport | MyImports"
+    document.title = "ImXport | MyImports";
   }, [user.email]);
 
   //remove product
@@ -37,9 +37,12 @@ const MyImports = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:3000/import/${id}`, {
-            method: "DELETE",
-          });
+          const res = await fetch(
+            `https://imxport-server.vercel.app/import/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
           const result = await res.json();
           if (result.deletedCount > 0) {
             setImports(imports.filter((item) => item._id !== id));
@@ -84,7 +87,7 @@ const MyImports = () => {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-aos="zoom-in">
                 {imports.map((product) => (
                   <ProductTable
                     key={product.productId}

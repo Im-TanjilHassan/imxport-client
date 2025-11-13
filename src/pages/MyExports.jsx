@@ -17,7 +17,7 @@ const MyExports = () => {
     const fetchExports = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/exports?email=${user.email}`
+          `https://imxport-server.vercel.app/exports?email=${user.email}`
         );
         const data = await res.json();
         setExportsData(data);
@@ -29,7 +29,7 @@ const MyExports = () => {
     };
     fetchExports();
 
-      document.title = "ImXport | MyExports";
+    document.title = "ImXport | MyExports";
   }, [user]);
 
   const handleDelete = async (id) => {
@@ -45,9 +45,12 @@ const MyExports = () => {
 
     if (confirm.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:3000/exports/${id}`, {
-          method: "DELETE",
-        });
+        const res = await fetch(
+          `https://imxport-server.vercel.app/exports/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
         const data = await res.json();
 
         if (data.deletedCount > 0) {
@@ -80,8 +83,6 @@ const MyExports = () => {
     return <Loader></Loader>;
   }
 
-  
-
   return (
     <div className="container mx-auto px-4 py-10">
       {/* Page Title */}
@@ -96,7 +97,7 @@ const MyExports = () => {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto shadow-xl rounded-xl">
+      <div className="overflow-x-auto shadow-xl rounded-xl py-20">
         {exportsData.length > 0 ? (
           <table className="table w-full">
             <thead className="bg-primary text-white text-center">
@@ -110,7 +111,7 @@ const MyExports = () => {
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody data-aos="zoom-in">
               {exportsData.map((product) => (
                 <ExportTable
                   key={product._id}

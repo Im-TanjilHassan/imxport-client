@@ -8,17 +8,16 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
 import ProductNotFound from "../components/ProductNotFound";
 
-
 const SeeDetails = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const { id } = useParams(); // get product id from URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [importQuantity, setImportQuantity] = useState(0)
+  const [importQuantity, setImportQuantity] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/products/${id}`)
+    fetch(`https://imxport-server.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -30,8 +29,7 @@ const SeeDetails = () => {
       });
   }, [id]);
 
-  
-  const handleModalSubmit = async() => {
+  const handleModalSubmit = async () => {
     if (!product) return;
     setLoading(true);
 
@@ -46,7 +44,7 @@ const SeeDetails = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/import", {
+      const res = await fetch("https://imxport-server.vercel.app/import", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,7 +87,6 @@ const SeeDetails = () => {
     } finally {
       setLoading(false);
     }
-
   };
 
   if (loading) {
@@ -102,7 +99,7 @@ const SeeDetails = () => {
 
   const {
     imageUrl,
-      productName,
+    productName,
     category,
     description,
     price,
@@ -110,7 +107,6 @@ const SeeDetails = () => {
     rating,
     quantity,
   } = product;
-
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -175,7 +171,9 @@ const SeeDetails = () => {
       {/* Description Section */}
       <div className="mt-12 bg-base-200 p-6 rounded-2xl shadow-sm">
         <h2 className="text-3xl font-bold mb-3">About this product</h2>
-        <p className="text-base text-paragraph leading-relaxed">{description}</p>
+        <p className="text-base text-paragraph leading-relaxed">
+          {description}
+        </p>
       </div>
     </div>
   );
