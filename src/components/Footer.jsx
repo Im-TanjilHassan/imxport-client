@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {/* ===== 1. Brand / About ===== */}
           <div>
-            <h2 className="text-2xl text-accent font-bold mb-3">IMXport</h2>
+            <h2 className="text-2xl text-paragraph font-bold mb-3"> <span className='text-secondary'>Im</span>Xport</h2>
             <p className="text-sm leading-relaxed opacity-90 text-gray-200">
               IMXport connects global buyers and sellers with premium quality
               export-import products. Reliable, fast, and trusted worldwide.
@@ -15,10 +15,10 @@ const Footer = () => {
 
           {/* ===== 2. Quick Links ===== */}
           <div>
-            <h3 className="text-lg text-accent font-semibold mb-3">
+            <h3 className="text-lg text-white font-semibold mb-3">
               Quick Links
             </h3>
-            <ul className="space-y-2 text-accent">
+            <ul className="space-y-2 text-gray-200">
               <li>
                 <a href="#" className="hover:font-semibold transition">
                   Home
@@ -44,7 +44,7 @@ const Footer = () => {
 
           {/* ===== 3. Support ===== */}
           <div>
-            <h3 className="text-lg text-accent font-semibold mb-3">Support</h3>
+            <h3 className="text-lg text-white font-semibold mb-3">Support</h3>
             <ul className="space-y-2 text-gray-200">
               <li>
                 <a href="#" className="hover:font-semibold transition">
@@ -71,7 +71,7 @@ const Footer = () => {
 
           {/* ===== 4. Newsletter ===== */}
           <div className="lg:col-span-2">
-            <h3 className="text-lg font-semibold text-accent mb-3">
+            <h3 className="text-lg font-semibold text-white mb-3">
               Subscribe to Newsletter
             </h3>
             <p className="text-sm mb-3 text-gray-200 opacity-90">

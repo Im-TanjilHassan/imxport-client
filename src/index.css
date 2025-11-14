@@ -22,7 +22,7 @@
         --color-accent: #000000;
         /* heading color: slightly brighter white-blue */
     
-        --color-paragraph: oklch(85% 0.04 260);
+        --color-paragraph: #949696;
         /* paragraph text color: light bluish gray */
 
 }

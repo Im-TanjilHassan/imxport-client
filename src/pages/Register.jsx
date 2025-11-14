@@ -82,7 +82,7 @@ const Register = () => {
       <div className="py-2 flex items-center justify-center bg-base-100">
         <div className="flex w-full max-w-5xl bg-base-200 rounded-2xl overflow-hidden shadow-2xl">
           {/* left Side - Dark Panel */}
-          <div className="md:flex w-1/2 bg-linear-to-br from-primary to-secondary text-white flex-col justify-center items-center p-10 relative">
+          <div className="hidden md:flex w-1/2 bg-linear-to-br from-primary to-secondary text-white flex-col justify-center items-center p-10 relative">
             <div
               data-aos="fade-up"
               className="relative z-10 text-center space-y-4"
