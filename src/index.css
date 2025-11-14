@@ -47,8 +47,7 @@
 }
 
 .active{
-    /* color: #11645d; */
-    color: #000000;
+    color: #11645d;
     font-weight: 700;
     border-bottom: 1px solid #11645d;
     
